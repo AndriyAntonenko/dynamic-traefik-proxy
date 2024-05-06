@@ -1,0 +1,41 @@
+version: "3.8"
+services:
+  traefik:
+    configs:
+      - source: traefik
+        target: /etc/traefik/traefik.yml
+    image: "traefik:v2.4"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    networks:
+      - proxy
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+    depends_on:
+      - proxy-controller
+
+  proxy-controller:
+    image: andriideveloper/dynamic-traefik-config-manager:latest
+    ports:
+      - "3000:3000"
+    networks:
+      - proxy
+    environment:
+      - IP_ADDRESS=143.198.116.18
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+
+configs:
+  traefik:
+    external: true
+
+networks:
+  proxy:

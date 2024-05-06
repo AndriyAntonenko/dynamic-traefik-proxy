@@ -1,0 +1,3 @@
+[submodule "do-docker-swarm-cluster-boilerplaite"]
+	path = do-docker-swarm-cluster-boilerplaite
+	url = git@github.com:AndriyAntonenko/do-docker-swarm-cluster-boilerplaite.git

@@ -1,0 +1,51 @@
+################################################################
+# API and dashboard configuration
+################################################################
+api:
+  dashboard: true
+  insecure: true
+
+################################################################
+# Docker configuration backend
+################################################################
+providers:
+  docker: 
+    watch: true
+    exposedByDefault: false
+    swarmMode: true
+    network: proxy
+
+  http:
+    endpoint: http://proxy-controller:3000/proxy-config
+    pollInterval: 10s
+    pollTimeout: 5s
+
+################################################################
+# Entrypoint
+################################################################
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: websecure
+          scheme: https
+  websecure:
+    address: ":443"
+
+################################################################
+# Traefik Logging
+################################################################
+log:
+  level: DEBUG
+
+################################################################
+# Challenge HTTP
+################################################################
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: andriyantonenko3.16@gmail.com 
+      storage: acme.json
+      tlsChallenge: {}
