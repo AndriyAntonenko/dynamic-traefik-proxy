@@ -1,4 +1,4 @@
-# Dynamic treafik proxy
+# Dynamic traefik proxy
 
 This demo is showing the example of simple server (`proxy-controller`), which is able to control the traefik proxy dynamically using HTTP provider.
 
