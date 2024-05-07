@@ -30,7 +30,7 @@ docker push andriideveloper/dynamic-traefik-config-manager:latest
 
 ### Proxy controller commands
 
-> Proxy controller could save domain (which is pointing to the `IP_ADDRESS`), return the config for Traefik in the yaml format and also to return custom message for each `Host`.****
+> Proxy controller could save domain (which is pointing to the `IP_ADDRESS`), return the config for Traefik in the yaml format and also to return custom message for each `Host`.
 
 1. Read proxy config
    ```bash
